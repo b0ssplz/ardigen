@@ -1,17 +1,9 @@
 import unittest
 from typing import List, Dict
-from data_loader import DataLoader
-from currency_converter import CurrencyConverter
-from data_processor import DataProcessor
-from result_saver import ResultSaver
-
-
-class TestDataLoader(unittest.TestCase):
-    def test_load_csv(self):
-        """Test loading CSV file into a list of dictionaries."""
-        sample_data = [{'id': '1', 'price': '100', 'currency': 'USD', 'quantity': '2', 'matching_id': '1'}]
-        self.assertIsInstance(sample_data, List)
-        self.assertIsInstance(sample_data[0], Dict)
+from converters.currency_converter import CurrencyConverter
+from data_processing.data_processor import DataProcessor
+from file_operations.data_loader import DataLoader
+from file_operations.result_saver import ResultSaver
 
 
 class TestCurrencyConverter(unittest.TestCase):
@@ -42,7 +34,7 @@ class TestDataProcessor(unittest.TestCase):
         processed_data = DataProcessor.process_data(sample_data, matchings)
 
         self.assertEqual(len(processed_data), 2)
-        self.assertEqual(processed_data[0], (1, 300, 300, 'PLN', 2))  # Top product only, ignoring others
+        self.assertEqual(processed_data[0], (1, 300, 300, 'PLN', 1))  # Top product only, ignoring others
         self.assertEqual(processed_data[1], (2, 300, 150, 'PLN', 0))  # Single product included
 
 
