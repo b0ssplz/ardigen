@@ -1,9 +1,9 @@
 import csv
 from typing import List, Dict, Tuple
-from data_loader import DataLoader
-from currency_converter import CurrencyConverter
-from data_processor import DataProcessor
-from result_saver import ResultSaver
+from file_operations.data_loader import DataLoader
+from converters.currency_converter import CurrencyConverter
+from data_processing.data_processor import DataProcessor
+from file_operations.result_saver import ResultSaver
 
 
 def main():
